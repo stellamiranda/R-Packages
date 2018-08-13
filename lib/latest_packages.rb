@@ -2,7 +2,7 @@ require 'dcf'
 require 'open-uri'
 
 module LatestPackages
-  def download_latest_packages(url='https://r-package-list.herokuapp.com/PACKAGES')
+  def download_latest_packages(url='https://cran.r-project.org/src/contrib/PACKAGES')
     file = open(url).read
   end
 

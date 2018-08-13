@@ -8,3 +8,6 @@ bundle install
 
 rake db:create
 
+rake db:migrate
+
+rake fetch_packages:sync_packages  

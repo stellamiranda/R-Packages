@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  include LatestPackages
   def index
-    en
+    @text = download_latest_packages
+  end
 end

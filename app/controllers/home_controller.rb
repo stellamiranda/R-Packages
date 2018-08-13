@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   include LatestPackages
   include PackageInfo
   def index
-    @text = ""
+    @packages = Package.all
   end
 end

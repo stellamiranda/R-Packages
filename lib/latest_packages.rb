@@ -18,4 +18,10 @@ module LatestPackages
     end
     return finalPackages
   end
+
+  def get_latest_packages
+    latestPackagesFile = download_latest_packages()
+    latestPackages = parse_latest_packages(latestPackagesFile)
+    return latestPackages
+  end 
 end

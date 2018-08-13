@@ -13,10 +13,17 @@ describe LatestPackages do
     @dummy = TestPackageClass.new
     @dummy.extend(LatestPackages)
   end
+
+  context "When #download_package_info method is called" do
+    it "should fetch package info from URL" do
+      expect(@dummy.download_latest_packages).to_not be_empty
+    end
+  end
+
   context "When #download_latest_packages method is called" do
     it "should download packages from URL" do
       sample = File.read("./spec/samples/download_latest_packages")
-      output = @dummy.download_latest_packages('A3',)
+      output = @dummy.download_latest_packages()
       expect(output).to eq sample
     end
   end

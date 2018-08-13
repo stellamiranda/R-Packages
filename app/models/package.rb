@@ -1,10 +1,11 @@
 class Package < ActiveRecord::Base
-
+  validates :name, :version, presence: true
   def self.find_package(name, version)
     Package.where(name: name, version: version).first
   end
 
   def self.create_package(data)
+    puts data
     package_data = data.reduce({}, :merge)
     Package.create(name: package_data["Package"], 
       version: package_data["Version"],

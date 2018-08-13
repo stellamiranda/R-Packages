@@ -1,0 +1,44 @@
+<%= render partial: 'header'%>
+
+<body>
+  <nav class="navbar navbar-dark bg-light border-bottom mb-5 p-4">
+    <div class="container">
+      <a class="navbar-brand text-uppercase font-weight-bold text-dark" href="<%= root_path %>">
+        <img src="https://www.r-project.org/logo/Rlogo.png" width="30" height="30" class="d-inline-block align-top mr-2" alt=""> Packages
+      </a>
+      <!-- class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Package name" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form-->
+    </div>
+  </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h1 class="font-weight-bold h4"><%= @package.name %>
+                    <span class="badge badge-secondary"><%= @package.version %></span>
+                </h1>
+                <h2><%= @package.title %></h2>
+                <p>
+                  <%= @package.description %>
+                </p>
+
+                <a class="btn btn-primary" href="https://cran.r-project.org/src/contrib/<%=@package.name%>_<%=@package.version%>.tar.gz" role="button">Download package</a>
+            </div>
+            <div class="col-4">
+                <h5>Author</h5>
+                <p><%= @package.authors %></p>
+
+                <h5>Maintainer</h5>
+                <p><%= @package.maintainers %></p>
+
+                <h5>Date/Publication</h5>
+                <p><%= @package.publication_date %></p>
+                <!--h5>Other versions</h5>
+                <ul>
+                    <li>v3</li>
+                </ul-->
+            </div>
+        </div>
+    </div>

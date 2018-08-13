@@ -12,7 +12,13 @@ namespace :fetch_packages do
   task sync_packages: :environment do
     packages = get_latest_packages
     packages.each do |package|
-      Package.find_or_create(package)
+      package_info = package.last
+      name = package_info[:name]
+      version = package_info[:version]
+      unless Package.find_package(name, version)
+        package_full_data = get_package_info(name, version)
+        Package.create_package(package_full_data)
+      end
     end
   end
 

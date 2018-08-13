@@ -10,6 +10,10 @@ class PackagesController < ApplicationController
     end
   end
 
+  def show
+    @package = Package.find(params[:id])
+  end
+
   def package_params
     params.require(:package).permit(:name, :version, :publication_date, :title, :description, :authors, :maintainers )
   end

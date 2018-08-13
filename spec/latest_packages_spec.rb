@@ -16,7 +16,7 @@ describe LatestPackages do
   context "When #download_latest_packages method is called" do
     it "should download packages from URL" do
       sample = File.read("./spec/samples/download_latest_packages")
-      output = @dummy.download_latest_packages('https://r-package-list.herokuapp.com/PACKAGES')
+      output = @dummy.download_latest_packages('A3',)
       expect(output).to eq sample
     end
   end

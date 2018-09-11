@@ -1,8 +1,10 @@
 require 'dcf'
 require 'open-uri'
 
+URL = "https://cran.r-project.org/src/contrib/PACKAGES"
+
 module LatestPackages
-  def download_latest_packages(url='https://cran.r-project.org/src/contrib/PACKAGES')
+  def download_latest_packages(url=URL)
     file = open(url).read
   end
 

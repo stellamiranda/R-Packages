@@ -1,6 +1,4 @@
 <%= render partial: 'header'%>
-
-<body>
   <nav class="navbar navbar-dark bg-light border-bottom mb-5 p-4">
     <div class="container">
       <a class="navbar-brand text-uppercase font-weight-bold text-dark" href="<%= root_path %>">
@@ -16,11 +14,11 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <h1 class="font-weight-bold h4"><%= @package.name %>
+                <h1 class="font-weight-bold h1 pb-4"><%= @package.name %>
                     <span class="badge badge-secondary"><%= @package.version %></span>
                 </h1>
-                <h2><%= @package.title %></h2>
-                <p>
+                <h4 class="pb-2"><%= @package.title %></h4>
+                <p class="pb-2">
                   <%= @package.description %>
                 </p>
 

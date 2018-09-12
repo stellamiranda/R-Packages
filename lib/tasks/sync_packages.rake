@@ -18,7 +18,7 @@ namespace :fetch_packages do
         version = package_info[:version]
         unless Package.find_package(name, version)
           package_full_data = package_info(name, version)
-          Package.create(package_full_data)
+          Package.create_package(package_full_data)
         end
       end
     end

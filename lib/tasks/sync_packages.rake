@@ -13,11 +13,13 @@ namespace :fetch_packages do
     packages = latest_packages
     packages.each do |package|
       package_info = package.last
-      name = package_info[:name]
-      version = package_info[:version]
-      unless Package.find_package(name, version)
-        package_full_data = get_package_info(name, version)
-        Package.create_package(package_full_data)
+      unless package_info.nil?
+        name = package_info[:name]
+        version = package_info[:version]
+        unless Package.find_package(name, version)
+          package_full_data = package_info(name, version)
+          Package.create(package_full_data)
+        end
       end
     end
   end

@@ -5,7 +5,6 @@ class Package < ActiveRecord::Base
   end
 
   def self.create_package(data)
-    puts data
     package_data = data.reduce({}, :merge)
     Package.create(name: package_data['Package'], 
       version: package_data['Version'],

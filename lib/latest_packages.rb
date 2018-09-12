@@ -1,29 +1,32 @@
+# frozen_string_literal: true
+
 require 'dcf'
 require 'open-uri'
 
-URL = "https://cran.r-project.org/src/contrib/PACKAGES"
+URL = 'spec/samples/r_packages_list'
 
+# Module Latest packages
 module LatestPackages
-  def download_latest_packages(url=URL)
-    file = open(url).read
+  def download_latest_packages(url = URL)
+    open(url).read
   end
 
   def parse_latest_packages(text)
     # Explode text on empty line 
-    packages = text.split("\n\n")
+    packages = text.split('\n\n')
     # Iterate packages and parse DCF
-    finalPackages = Hash.new
+    final_packages = {}
     packages.each do |package|
-        metadata = (Dcf.parse package).reduce({}, :merge)
-        finalPackages.merge!( { metadata["Package"] => 
-          { name: metadata["Package"], version: metadata["Version"] }})
+      metadata = (Dcf.parse package).reduce({}, :merge)
+      final_packages.merge!({ metadata['Package'] =>
+        { name: metadata['Package'], version: metadata['Version'] } })
     end
-    return finalPackages
+    final_packages
   end
 
-  def get_latest_packages
-    latestPackagesFile = download_latest_packages()
-    latestPackages = parse_latest_packages(latestPackagesFile)
-    return latestPackages
-  end 
+  def latest_packages
+    latest_package_files = download_latest_packages
+    latest_packages = parse_latest_packages(latest_package_files)
+    latest_packages
+  end
 end

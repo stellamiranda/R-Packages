@@ -16,7 +16,6 @@ module PackageInfo
       open( URL + package + '_' + version + '.tar.gz')
     rescue => exception
       puts package + " info Not Found"
-      nil
     end
   
   end

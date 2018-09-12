@@ -18,7 +18,7 @@ describe PackageInfo do
   end
   context 'When #download_package_info method is called' do
     it 'should fetch package info from URL' do
-      expect(@dummy.download_package_info('spec/samples/', 'A3', '1.0.0')).to be_an_instance_of(File)
+      expect(@dummy.download_package_info('A3', '1.0.0')).to be_an_instance_of(Tempfile)
     end
   end
 
@@ -55,7 +55,7 @@ describe PackageInfo do
                   'Packaged' => '2015-08-16 14:17:33 UTC; scott',
                   'Repository' => 'CRAN',
                   'Date/Publication' => '2015-08-16 23:05:52' }]
-      expect(@dummy.package_info('spec/samples/', 'A3', '1.0.0')).to eq(sample)
+      expect(@dummy.package_info('A3', '1.0.0')).to eq(sample)
     end
   end
 

@@ -9,8 +9,8 @@ require 'rubygems/package'
 
 module PackageInfo
 
-  def download_package_info(package, version)
-    open('https://cran.r-project.org/src/contrib/' + package + '_' + version + '.tar.gz')
+  def download_package_info(url = 'https://cran.r-project.org/src/contrib/', package, version)
+    open( url + package + '_' + version + '.tar.gz')
   end
 
   def extract_description(package, file)
@@ -25,8 +25,8 @@ module PackageInfo
     metadata
   end
 
-  def package_info(name, version)
-    file = download_package_info(name, version)
+  def package_info(url, name, version)
+    file = download_package_info(url, name, version)
     description = extract_description(name, file)
     metadata = parse_package_info(description)
     metadata

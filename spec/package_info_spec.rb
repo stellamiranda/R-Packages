@@ -18,13 +18,13 @@ describe PackageInfo do
   end
   context 'When #download_package_info method is called' do
     it 'should fetch package info from URL' do
-      expect(@dummy.download_package_info('A3', '1.0.0')).to be_an_instance_of(Tempfile)
+      expect(@dummy.download_package_info('spec/samples/', 'A3', '1.0.0')).to be_an_instance_of(File)
     end
   end
 
   context 'When #extract_description method is called' do
     it 'should extract DESCRIPTION content from .tar.gz' do
-      file = open('https://cran.r-project.org/src/contrib/A3_1.0.0.tar.gz')
+      file = open('spec/samples/A3_1.0.0.tar.gz')
       sample = File.read('./spec/samples/extract_description')
       expect(@dummy.extract_description('A3', file)).to eq(sample)
     end
@@ -40,7 +40,8 @@ describe PackageInfo do
 
   context 'When #package_info method is called' do
     it 'should parse data content to Hash' do
-      sample = [{ 'Package' => 'A3', 'Type' => 'Package',
+      sample = [{ 'Package' => 'A3', 
+                  'Type' => 'Package',
                   'Title' => 'Accurate, Adaptable, and Accessible Error Metrics for Predictive Models',
                   'Version' => '1.0.0',
                   'Date' => '2015-08-15',
@@ -54,7 +55,7 @@ describe PackageInfo do
                   'Packaged' => '2015-08-16 14:17:33 UTC; scott',
                   'Repository' => 'CRAN',
                   'Date/Publication' => '2015-08-16 23:05:52' }]
-      expect(@dummy.package_info('A3', '1.0.0')).to eq(sample)
+      expect(@dummy.package_info('spec/samples/', 'A3', '1.0.0')).to eq(sample)
     end
   end
 

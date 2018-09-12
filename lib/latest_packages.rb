@@ -24,8 +24,8 @@ module LatestPackages
     final_packages
   end
 
-  def latest_packages
-    latest_package_files = download_latest_packages
+  def latest_packages(url = URL)
+    latest_package_files = download_latest_packages(url)
     latest_packages = parse_latest_packages(latest_package_files)
     latest_packages
   end

@@ -3,7 +3,7 @@
 require 'dcf'
 require 'open-uri'
 
-URL = 'spec/samples/r_packages_list'
+URL = 'https://cran.r-project.org/src/contrib/PACKAGES'
 
 # Module Latest packages
 module LatestPackages
